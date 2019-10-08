@@ -3,6 +3,7 @@
 namespace Ultraleet\VerifyOnce;
 
 use Ultraleet\VerifyOnce\Exceptions\InvalidConfigException;
+use Ultraleet\VerifyOnce\Exceptions\AuthenticationException;
 
 /**
  * VerifyOnce integration library main class.
@@ -17,6 +18,11 @@ final class VerifyOnce
     private $config;
 
     /**
+     * @var API
+     */
+    private $api;
+
+    /**
      * VerifyOnce constructor.
      *
      * @param array $config
@@ -25,6 +31,17 @@ final class VerifyOnce
     public function __construct(array $config)
     {
         $this->configure($config);
+    }
+
+    /**
+     * Initiate verification and return the response from VerifyOnce API.
+     *
+     * @return array
+     * @throws AuthenticationException
+     */
+    public function initiate(): array
+    {
+        return $this->getApi()->initiate();
     }
 
     /**
@@ -59,5 +76,16 @@ final class VerifyOnce
                 throw new InvalidConfigException("Missing required configuration parameter: $key");
             }
         }
+    }
+
+    /**
+     * @return API
+     */
+    private function getApi(): API
+    {
+        if (!isset($this->api)) {
+            $this->api = new API($this->config);
+        }
+        return $this->api;
     }
 }
