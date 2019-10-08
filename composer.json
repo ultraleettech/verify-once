@@ -1,0 +1,22 @@
+{
+    "name": "ultraleet/verify-once",
+    "description": "VerifyOnce verification service integration library.",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Rene Aavik",
+            "email": "renx81@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "autoload": {
+        "psr-4": {"Ultraleet\\VerifyOnce\\": "src/"}
+    },
+    "require": {
+        "php": ">=7.2"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^8.4"
+    }
+}
