@@ -2,6 +2,7 @@
 
 namespace Ultraleet\VerifyOnce;
 
+use Firebase\JWT\JWT;
 use Ultraleet\VerifyOnce\Exceptions\InvalidConfigException;
 use Ultraleet\VerifyOnce\Exceptions\AuthenticationException;
 
@@ -12,6 +13,8 @@ use Ultraleet\VerifyOnce\Exceptions\AuthenticationException;
  */
 final class VerifyOnce
 {
+    const ALGORITHMS = ['HS256', 'HS384', 'HS512'];
+
     /**
      * @var array
      */
@@ -42,6 +45,19 @@ final class VerifyOnce
     public function initiate(): array
     {
         return $this->getApi()->initiate();
+    }
+
+    /**
+     * Verify the callback info and return the decoded array.
+     *
+     * Throws an exception in case verification fails.
+     *
+     * @param string $body
+     * @return array
+     */
+    public function verify(string $body): array
+    {
+        return (array) JWT::decode($body, $this->config['password'], self::ALGORITHMS);
     }
 
     /**
