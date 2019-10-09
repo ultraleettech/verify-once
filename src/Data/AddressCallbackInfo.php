@@ -29,6 +29,24 @@ class AddressCallbackInfo extends AbstractData
     protected $updatedDate;
 
     /**
+     * Set required field names.
+     *
+     * @return array
+     */
+    protected function required(): array
+    {
+        return [
+            'id',
+            'userId',
+            'transactionId',
+            'countryCode',
+            'city',
+            'address',
+            'status',
+        ];
+    }
+
+    /**
      * @return CountryCode
      */
     public function getCountryCode(): CountryCode

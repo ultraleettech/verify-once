@@ -24,6 +24,24 @@ class User extends AbstractData
     protected $updatedDate;
 
     /**
+     * Set required field names.
+     *
+     * @return array
+     */
+    protected function required(): array
+    {
+        return [
+            'id',
+            'email',
+            'role',
+            'scopes',
+            'status',
+            'createdDate',
+            'updatedDate',
+        ];
+    }
+
+    /**
      * @return UserStatus
      */
     public function getStatus(): UserStatus

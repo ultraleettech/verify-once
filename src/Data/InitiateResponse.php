@@ -14,6 +14,19 @@ class InitiateResponse extends AbstractData
     protected $url;
 
     /**
+     * Set required field names.
+     *
+     * @return array
+     */
+    protected function required(): array
+    {
+        return [
+            'transactionId',
+            'url',
+        ];
+    }
+
+    /**
      * @return string
      */
     public function getTransactionId(): string

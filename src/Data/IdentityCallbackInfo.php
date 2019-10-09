@@ -39,6 +39,22 @@ class IdentityCallbackInfo extends AbstractData
     protected $updatedDate;
 
     /**
+     * Set required field names.
+     *
+     * @return array
+     */
+    protected function required(): array
+    {
+        return [
+            'id',
+            'userId',
+            'transactionId',
+            'status',
+            'isManualReview',
+        ];
+    }
+
+    /**
      * @return VerificationStatus
      */
     public function getStatus(): VerificationStatus

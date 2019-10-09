@@ -4,6 +4,7 @@ namespace Tests\Unit\Data;
 
 use TypeError;
 use Tests\TestCase;
+use Tests\DefaultDataTrait;
 use Ultraleet\VerifyOnce\Data\User;
 use Ultraleet\VerifyOnce\Data\Transaction;
 use Ultraleet\VerifyOnce\Data\CallbackInfo;
@@ -12,23 +13,15 @@ use Ultraleet\VerifyOnce\Data\IdentityCallbackInfo;
 
 class CallbackInfoTest extends TestCase
 {
+    use DefaultDataTrait;
+
     public function testValidData()
     {
         $info = new CallbackInfo([
-            'transaction' => [],
-            'user' => [
-                'status' => 'ACTIVE',
-                'scopes' => [],
-            ],
-            'identityVerification' => [
-                'status' => 'FAILED',
-                'idType' => 'PASSPORT',
-                'rejectReason' => 'ID_INVALID_DATA',
-            ],
-            'addressVerification' => [
-                'status' => 'FAILED',
-                'countryCode' => 'EST',
-            ],
+            'transaction' => $this->defaultTransactionData,
+            'user' => $this->defaultUserData,
+            'identityVerification' => $this->defaultIdentityData,
+            'addressVerification' => $this->defaultAddressData,
         ]);
         $this->assertInstanceOf(Transaction::class, $info->transaction);
         $this->assertInstanceOf(User::class, $info->user);
@@ -39,11 +32,8 @@ class CallbackInfoTest extends TestCase
     public function testValidDataWithAllowedNullValues()
     {
         $info = new CallbackInfo([
-            'transaction' => [],
-            'user' => [
-                'status' => 'ACTIVE',
-                'scopes' => [],
-            ],
+            'transaction' => $this->defaultTransactionData,
+            'user' => $this->defaultUserData,
             'identityVerification' => null,
             'addressVerification' => null,
         ]);
@@ -69,7 +59,7 @@ class CallbackInfoTest extends TestCase
     {
         $this->expectException(TypeError::class);
         $info = new CallbackInfo([
-            'transaction' => [],
+            'transaction' => $this->defaultTransactionData,
             'user' => null,
             'identityVerification' => null,
             'addressVerification' => null,

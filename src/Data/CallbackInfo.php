@@ -18,6 +18,18 @@ class CallbackInfo extends AbstractData
     protected $addressVerification;
 
     /**
+     * Set required field names.
+     *
+     * @return array
+     */
+    protected function required(): array
+    {
+        return [
+
+        ];
+    }
+
+    /**
      * @return Transaction
      */
     public function getTransaction(): Transaction

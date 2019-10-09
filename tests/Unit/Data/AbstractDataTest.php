@@ -7,6 +7,7 @@ use TypeError;
 use Tests\TestCase;
 use Ultraleet\VerifyOnce\Data\AbstractData;
 use Ultraleet\VerifyOnce\Exceptions\UndefinedFieldException;
+use Ultraleet\VerifyOnce\Exceptions\MissingRequiredFieldException;
 
 class AbstractDataTest extends TestCase
 {
@@ -96,6 +97,12 @@ class AbstractDataTest extends TestCase
         $array['mutatingField'] .= 'Mutated';
         $this->assertSame($array, $object->toArray());
     }
+
+    public function testRequiredField()
+    {
+        $this->expectException(MissingRequiredFieldException::class);
+        (new TestData())->validate();
+    }
 }
 
 /**
@@ -110,6 +117,16 @@ class TestData extends AbstractData
     protected $getterSetterField;
     protected $mutatingField;
     protected $regularField;
+
+    /**
+     * Set required field names.
+     *
+     * @return array
+     */
+    protected function required(): array
+    {
+        return ['regularField'];
+    }
 
     /**
      * @return mixed

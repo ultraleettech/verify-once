@@ -5,6 +5,7 @@ namespace Tests\Unit\Data;
 use TypeError;
 use Tests\TestCase;
 use BadMethodCallException;
+use Tests\DefaultDataTrait;
 use Ultraleet\VerifyOnce\Types\IdentityId;
 use Ultraleet\VerifyOnce\Types\VerificationStatus;
 use Ultraleet\VerifyOnce\Data\IdentityCallbackInfo;
@@ -12,13 +13,11 @@ use Ultraleet\VerifyOnce\Types\IdentityRejectReason;
 
 class IdentityCallbackInfoTest extends TestCase
 {
+    use DefaultDataTrait;
+
     public function testValidData()
     {
-        $info = new IdentityCallbackInfo([
-            'status' => 'FAILED',
-            'idType' => 'PASSPORT',
-            'rejectReason' => 'ID_INVALID_DATA',
-        ]);
+        $info = new IdentityCallbackInfo($this->defaultIdentityData);
         $this->assertInstanceOf(VerificationStatus::class, $info->status);
         $this->assertInstanceOf(IdentityId::class, $info->idType);
         $this->assertInstanceOf(IdentityRejectReason::class, $info->rejectReason);
@@ -26,11 +25,10 @@ class IdentityCallbackInfoTest extends TestCase
 
     public function testValidDataWithAllowedNullValues()
     {
-        $info = new IdentityCallbackInfo([
-            'status' => 'FAILED',
+        $info = new IdentityCallbackInfo($this->mergeData([
             'idType' => null,
             'rejectReason' => null,
-        ]);
+        ], 'Identity'));
         $this->assertInstanceOf(VerificationStatus::class, $info->status);
         $this->assertNull($info->idType);
         $this->assertNull($info->rejectReason);
@@ -39,34 +37,32 @@ class IdentityCallbackInfoTest extends TestCase
     public function testNullStatusIsInvalid()
     {
         $this->expectException(TypeError::class);
-        $info = new IdentityCallbackInfo([
+        $info = new IdentityCallbackInfo($this->mergeData([
             'status' => null,
-        ]);
+        ], 'Identity'));
     }
 
     public function testInvalidStatus()
     {
         $this->expectException(BadMethodCallException::class);
-        $info = new IdentityCallbackInfo([
+        $info = new IdentityCallbackInfo($this->mergeData([
             'status' => 'invalid',
-        ]);
+        ], 'Identity'));
     }
 
     public function testInvalidIdType()
     {
         $this->expectException(BadMethodCallException::class);
-        $info = new IdentityCallbackInfo([
-            'status' => 'FAILED',
+        $info = new IdentityCallbackInfo($this->mergeData([
             'idType' => 'invalid',
-        ]);
+        ], 'Identity'));
     }
 
     public function testInvalidRejectReason()
     {
         $this->expectException(BadMethodCallException::class);
-        $info = new IdentityCallbackInfo([
-            'status' => 'FAILED',
+        $info = new IdentityCallbackInfo($this->mergeData([
             'rejectReason' => 'invalid',
-        ]);
+        ], 'Identity'));
     }
 }
