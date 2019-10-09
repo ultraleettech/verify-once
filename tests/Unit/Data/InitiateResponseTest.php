@@ -10,7 +10,7 @@ class InitiateResponseTest extends TestCase
 {
     const URL = 'http://localhost/verify/testId';
 
-    public function testInstantiateWithValidData()
+    public function testValidData()
     {
         $initiateResponse = new InitiateResponse([
             'transactionId' => 'testId',
@@ -19,7 +19,7 @@ class InitiateResponseTest extends TestCase
         $this->assertSame('testId', $initiateResponse->transactionId);
     }
 
-    public function testInstantiateWithInvalidData()
+    public function testInvalidData()
     {
         $this->expectException(TypeError::class);
         $initiateResponse = new InitiateResponse([
