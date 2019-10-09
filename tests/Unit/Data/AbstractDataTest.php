@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Data;
+namespace Tests\Unit\Data;
 
 use stdClass;
 use TypeError;

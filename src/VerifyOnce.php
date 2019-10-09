@@ -3,6 +3,7 @@
 namespace Ultraleet\VerifyOnce;
 
 use Firebase\JWT\JWT;
+use Ultraleet\VerifyOnce\Data\InitiateResponse;
 use Ultraleet\VerifyOnce\Exceptions\InvalidConfigException;
 use Ultraleet\VerifyOnce\Exceptions\AuthenticationException;
 
@@ -39,10 +40,10 @@ final class VerifyOnce
     /**
      * Initiate verification and return the response from VerifyOnce API.
      *
-     * @return array
+     * @return InitiateResponse
      * @throws AuthenticationException
      */
-    public function initiate(): array
+    public function initiate(): InitiateResponse
     {
         return $this->getApi()->initiate();
     }
@@ -100,8 +101,16 @@ final class VerifyOnce
     private function getApi(): API
     {
         if (!isset($this->api)) {
-            $this->api = new API($this->config);
+            $this->setApi(new API($this->config));
         }
         return $this->api;
+    }
+
+    /**
+     * @param API $api
+     */
+    public function setApi(API $api): void
+    {
+        $this->api = $api;
     }
 }
