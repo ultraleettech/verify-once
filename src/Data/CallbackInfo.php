@@ -9,6 +9,7 @@ namespace Ultraleet\VerifyOnce\Data;
  * @property-read User $user;
  * @property-read IdentityCallbackInfo $identityVerification;
  * @property-read AddressCallbackInfo $addressVerification;
+ * @property-read int $iat
  */
 class CallbackInfo extends AbstractData
 {
@@ -16,6 +17,7 @@ class CallbackInfo extends AbstractData
     protected $user;
     protected $identityVerification;
     protected $addressVerification;
+    protected $iat;
 
     /**
      * Set required field names.
