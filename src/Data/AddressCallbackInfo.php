@@ -9,8 +9,21 @@ use Ultraleet\VerifyOnce\Exceptions\InvalidValueException;
 /**
  * Class AddressCallbackInfo
  *
- * @property CountryCode $countryCode
- * @property VerificationStatus $status
+ * @package ultraleet/verify-once
+ *
+ * @property-read string $id
+ * @property-read string $userId
+ * @property-read string $transactionId
+ * @property-read CountryCode $countryCode
+ * @property-read string $city
+ * @property-read string $state
+ * @property-read string $postalCode
+ * @property-read string $address
+ * @property-read VerificationStatus $status
+ * @property-read string $createdDate
+ * @property-read string $updatedDate
+ *
+ * @todo Convert datetime fields
  */
 class AddressCallbackInfo extends AbstractData
 {

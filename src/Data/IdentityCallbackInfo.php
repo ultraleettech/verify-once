@@ -2,7 +2,6 @@
 
 namespace Ultraleet\VerifyOnce\Data;
 
-use InvalidArgumentException;
 use Ultraleet\VerifyOnce\Types\IdentityId;
 use Ultraleet\VerifyOnce\Types\VerificationStatus;
 use Ultraleet\VerifyOnce\Types\IdentityRejectReason;
@@ -11,9 +10,26 @@ use Ultraleet\VerifyOnce\Exceptions\InvalidValueException;
 /**
  * Class IdentityCallbackInfo
  *
- * @property VerificationStatus $status
- * @property IdentityId $idType
- * @property IdentityRejectReason $rejectReason
+ * @property-read string $id
+ * @property-read string $userId
+ * @property-read string $transactionId
+ * @property-read VerificationStatus $status
+ * @property-read IdentityId $idType
+ * @property-read string $idNumber
+ * @property-read string $idCountry
+ * @property-read string $idFirstName
+ * @property-read string $idLastName
+ * @property-read string $idDob
+ * @property-read string $idExpiry
+ * @property-read IdentityRejectReason $rejectReason
+ * @property-read bool $isManualReview
+ * @property-read string $callbackJSON
+ * @property-read string $transactionDate
+ * @property-read string $callbackDate
+ * @property-read string $createdDate
+ * @property-read string $updatedDate
+ *
+ * @todo Convert datetime fields
  */
 class IdentityCallbackInfo extends AbstractData
 {

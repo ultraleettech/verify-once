@@ -5,10 +5,10 @@ namespace Ultraleet\VerifyOnce\Data;
 /**
  * Class CallbackInfo
  *
- * @property Transaction $transaction;
- * @property User $user;
- * @property IdentityCallbackInfo $identityVerification;
- * @property AddressCallbackInfo $addressVerification;
+ * @property-read Transaction $transaction;
+ * @property-read User $user;
+ * @property-read IdentityCallbackInfo $identityVerification;
+ * @property-read AddressCallbackInfo $addressVerification;
  */
 class CallbackInfo extends AbstractData
 {

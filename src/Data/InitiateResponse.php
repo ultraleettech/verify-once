@@ -5,8 +5,10 @@ namespace Ultraleet\VerifyOnce\Data;
 /**
  * Class InitiateResponse
  *
- * @property string $transactionId
- * @property string $url
+ * @package ultraleet/verify-once
+ *
+ * @property-read string $transactionId
+ * @property-read string $url
  */
 class InitiateResponse extends AbstractData
 {

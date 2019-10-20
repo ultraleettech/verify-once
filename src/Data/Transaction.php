@@ -2,6 +2,19 @@
 
 namespace Ultraleet\VerifyOnce\Data;
 
+/**
+ * Class Transaction
+ *
+ * @package ultraleet/verify-once
+ *
+ * @property-read string $id
+ * @property-read string $integratorId
+ * @property-read string $userId
+ * @property-read string $createdDate
+ * @property-read string $updatedDate
+ *
+ * @todo Convert datetime fields
+ */
 class Transaction extends AbstractData
 {
     protected $id;

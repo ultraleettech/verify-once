@@ -8,8 +8,15 @@ use Ultraleet\VerifyOnce\Exceptions\InvalidValueException;
 /**
  * Class User
  *
- * @property UserStatus $status
- * @property array $scopes
+ * @property-read string $id
+ * @property-read string $email
+ * @property-read string $role
+ * @property-read  UserStatus $status
+ * @property-read string[] $scopes
+ * @property-read string $createdDate
+ * @property-read string $updatedDate
+ *
+ * @todo Convert datetime fields
  */
 class User extends AbstractData
 {

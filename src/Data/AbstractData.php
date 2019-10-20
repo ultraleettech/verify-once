@@ -6,6 +6,13 @@ use MyCLabs\Enum\Enum;
 use Ultraleet\VerifyOnce\Exceptions\UndefinedFieldException;
 use Ultraleet\VerifyOnce\Exceptions\MissingRequiredFieldException;
 
+/**
+ * Class AbstractData
+ *
+ * Data object base class.
+ *
+ * @package ultraleet/verify-once
+ */
 abstract class AbstractData
 {
     public function __construct($data = [])
