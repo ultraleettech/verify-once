@@ -14,8 +14,6 @@ use Ultraleet\VerifyOnce\Exceptions\InvalidValueException;
  * @property VerificationStatus $status
  * @property IdentityId $idType
  * @property IdentityRejectReason $rejectReason
- *
- * @todo Add required fields.
  */
 class IdentityCallbackInfo extends AbstractData
 {
@@ -47,7 +45,6 @@ class IdentityCallbackInfo extends AbstractData
     {
         return [
             'id',
-            'userId',
             'transactionId',
             'status',
             'isManualReview',

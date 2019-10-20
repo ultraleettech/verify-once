@@ -10,8 +10,6 @@ use Ultraleet\VerifyOnce\Exceptions\InvalidValueException;
  *
  * @property UserStatus $status
  * @property array $scopes
- *
- * @todo Add required fields.
  */
 class User extends AbstractData
 {

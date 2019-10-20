@@ -11,8 +11,6 @@ use Ultraleet\VerifyOnce\Exceptions\InvalidValueException;
  *
  * @property CountryCode $countryCode
  * @property VerificationStatus $status
- *
- * @todo Add required fields.
  */
 class AddressCallbackInfo extends AbstractData
 {
