@@ -33,7 +33,7 @@ class API
     public function initiate(): InitiateResponse
     {
         try {
-            $response = $this->getClient()->post('/initiate');
+            $response = $this->getClient()->post('initiate');
         } catch (ClientException $exception) {
             if (401 == $exception->getResponse()->getStatusCode()) {
                 throw new AuthenticationException('Invalid username/password provided.', 401, $exception);

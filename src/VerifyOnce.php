@@ -74,7 +74,7 @@ final class VerifyOnce
     {
         $this->validateConfig($config);
         $defaults = [
-            'baseUrl' => 'https://app.verifyonce.com/api/verify',
+            'baseUrl' => 'https://app.verifyonce.com/api/verify/',
         ];
         $this->config = array_merge($defaults, $config);
     }

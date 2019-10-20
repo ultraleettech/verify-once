@@ -47,7 +47,7 @@ class InitiateTest extends TestCase
     {
         return $this->client->expects($this->once())
             ->method('__call')
-            ->with($this->equalTo('post'), $this->equalTo(['/initiate']))
+            ->with($this->equalTo('post'), $this->equalTo(['initiate']))
             ->willReturn($response);
     }
 
@@ -55,7 +55,7 @@ class InitiateTest extends TestCase
     {
         return $this->client->expects($this->once())
             ->method('__call')
-            ->with($this->equalTo('post'), $this->equalTo(['/initiate']))
+            ->with($this->equalTo('post'), $this->equalTo(['initiate']))
             ->willThrowException($exception);
     }
 
@@ -88,7 +88,7 @@ class InitiateTest extends TestCase
     public function testAuthenticationError()
     {
         $response = $this->createResponse(401, 'Error');
-        $request = new Request('post', '/initiate');
+        $request = new Request('post', 'initiate');
         $exception = new ClientException('Error', $request, $response);
         $this->mockException($exception);
 
